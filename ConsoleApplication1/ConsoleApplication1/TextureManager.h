@@ -3,13 +3,14 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include "moony.h"
 
 class TextureManager
 {
-public:
+private:
 	static TextureManager* instance;
-
-	std::map<std::string, sf::Texture> loadedAtlases;
+public:
+	std::map<std::string, moony::TextureAtlas*> loadedAtlases;
 
 public:
 	static TextureManager* getInstance();
@@ -18,6 +19,5 @@ public:
 
 	void loadAtlas(std::string atl_name);
 
-	std::pair<sf::Texture*, sf::IntRect> getTextureByName(std::string name);
+	std::pair<const sf::Texture*, sf::Rect<int>> getTextureByName(std::string name);
 };
-

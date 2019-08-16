@@ -2,6 +2,7 @@
 #include <map>
 #include <tuple>
 #include <SFML/Graphics.hpp>
+
 class ResourceManager
 {
 public:

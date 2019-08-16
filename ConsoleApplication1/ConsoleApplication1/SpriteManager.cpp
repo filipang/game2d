@@ -1,5 +1,5 @@
-#include "pch.h"
 #include "SpriteManager.h"
+#include "TextureManager.h"
 
 SpriteManager* SpriteManager::instance = NULL;
 
@@ -17,9 +17,9 @@ SpriteManager::SpriteManager()
 
 
 sf::Sprite SpriteManager::getSpriteByName(std::string sp_name) {
-	std::pair<sf::Texture*, sf::IntRect> ret = TextureManager::getInstance()->getTextureByName(sp_name);
+	std::pair<const sf::Texture*, sf::IntRect> ret = TextureManager::getInstance()->getTextureByName(sp_name);
+
 	sf::Sprite sprite(*ret.first);
 	sprite.setTextureRect(ret.second);
 	return sf::Sprite(sprite);
-
 }

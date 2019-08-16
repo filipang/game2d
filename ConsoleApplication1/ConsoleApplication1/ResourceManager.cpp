@@ -31,9 +31,7 @@ ResourceManager::ResourceManager()
 		Json::Value def;
 		for (std::vector<std::string>::iterator i = list.begin(); i != list.end(); i++) {
 			std::cout << *i << std::endl;
-			ResourceManager::texture_atlas_map[*i] = json_data[*i]["atlas"].asString();
-			ResourceManager::texture_rect_map[*i] = std::make_pair(sf::Vector2u(json_data[*i]["u"].asUInt(), json_data[*i]["v"].asUInt()), sf::Vector2u(json_data[*i]["w"].asUInt(), json_data[*i]["h"].asUInt()));
-
+			ResourceManager::texture_atlas_map[*i] = json_data[*i].asString();
 		}
 	}
 	catch (Json::LogicError error) {

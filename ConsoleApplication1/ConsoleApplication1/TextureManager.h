@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <tuple>
-#include "moony.h"
+#include "moony/TextureAtlas.h"
 
 class TextureManager
 {

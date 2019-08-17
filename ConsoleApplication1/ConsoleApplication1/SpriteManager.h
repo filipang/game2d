@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "moony/Sprite.h"
 
 class SpriteManager
 {
@@ -11,5 +12,5 @@ public:
 
 	SpriteManager();
 
-	sf::Sprite getSpriteByName(std::string sp_name);
+	moony::Sprite getSpriteByName(std::string sp_name);
 };

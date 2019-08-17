@@ -1,5 +1,6 @@
 #include "SpriteManager.h"
 #include "TextureManager.h"
+#include "moony/Sprite.h"
 
 SpriteManager* SpriteManager::instance = NULL;
 
@@ -11,15 +12,12 @@ SpriteManager* SpriteManager::getInstance()
 	return SpriteManager::instance;
 }
 
-SpriteManager::SpriteManager()
-{
-}
+SpriteManager::SpriteManager(){}
 
 
-sf::Sprite SpriteManager::getSpriteByName(std::string sp_name) {
-	std::pair<const sf::Texture*, sf::IntRect> ret = TextureManager::getInstance()->getTextureByName(sp_name);
+moony::Sprite SpriteManager::getSpriteByName(std::string sp_name) {
 
-	sf::Sprite sprite(*ret.first);
-	sprite.setTextureRect(ret.second);
-	return sf::Sprite(sprite);
+	moony::Texture ret = TextureManager::getInstance()->getTextureByName(sp_name);
+	moony::Sprite sprite(ret);
+	return ret;
 }

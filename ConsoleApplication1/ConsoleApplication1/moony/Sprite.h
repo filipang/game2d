@@ -16,20 +16,6 @@ namespace moony
 		sf::Color m_color;
 		int m_layer;
 	};
-
-
-	Sprite::Sprite()
-	{
-		m_layer = 0;
-		m_color = sf::Color::White;
-	}
-
-	Sprite::Sprite(const Texture& subtexture, int layer, sf::Color color)
-	{
-		m_subtexture = subtexture;
-		m_layer = layer;
-		m_color = color;
-	}
 }
 
 #endif

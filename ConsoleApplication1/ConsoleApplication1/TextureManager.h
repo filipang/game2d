@@ -19,5 +19,5 @@ public:
 
 	void loadAtlas(std::string atl_name);
 
-	std::pair<const sf::Texture*, sf::Rect<int>> getTextureByName(std::string name);
+	moony::Texture getTextureByName(std::string name);
 };

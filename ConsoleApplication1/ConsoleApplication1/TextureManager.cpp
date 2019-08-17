@@ -22,12 +22,11 @@ void TextureManager::loadAtlas(std::string atl_name) {
 	sf::Texture atlas;
 	moony::TextureAtlas* texture_atlas = new moony::TextureAtlas();
 	texture_atlas->loadFromFile("atlases/" + atl_name + ".mtpf");
-	TextureManager::getInstance()->loadedAtlases["moony_texture_packer_ready"] = texture_atlas;
+	TextureManager::getInstance()->loadedAtlases[atl_name] = texture_atlas;
 }
 
-std::pair<const sf::Texture*, sf::Rect<int>> TextureManager::getTextureByName(std::string name) {
+moony::Texture TextureManager::getTextureByName(std::string name) {
 
-	const moony::Texture* m_texture; 
-	m_texture = &loadedAtlases[ResourceManager::getInstance()->texture_atlas_map[name]]->findSubTexture(name);
-	return std::make_pair(m_texture->m_texture, m_texture->m_rect);
+	moony::Texture m_texture = loadedAtlases[ResourceManager::getInstance()->texture_atlas_map[name]]->findSubTexture(name);
+	return m_texture;
 }

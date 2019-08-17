@@ -1,2 +1,0 @@
-﻿  ConsoleApplication1.cpp
-LINK : fatal error LNK1181: cannot open input file 'sfml-system.lib'

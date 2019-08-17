@@ -32,6 +32,7 @@ ResourceManager::ResourceManager()
 		for (std::vector<std::string>::iterator i = list.begin(); i != list.end(); i++) {
 			std::cout << *i << std::endl;
 			ResourceManager::texture_atlas_map[*i] = json_data[*i].asString();
+		
 		}
 	}
 	catch (Json::LogicError error) {

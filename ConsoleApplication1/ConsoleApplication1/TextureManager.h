@@ -20,4 +20,5 @@ public:
 	void loadAtlas(std::string atl_name);
 
 	moony::Texture getTextureByName(std::string name);
+	moony::Texture getTextureByName(std::string name, std::string atlas);
 };

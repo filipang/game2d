@@ -31,13 +31,33 @@ ResourceManager::ResourceManager()
 		Json::Value def;
 		for (std::vector<std::string>::iterator i = list.begin(); i != list.end(); i++) {
 			std::cout << *i << std::endl;
-			ResourceManager::texture_atlas_map[*i] = json_data[*i].asString();
+			ResourceManager::texture_atlas_map[*i] = json_data[*i]["atlas"].asString();
 		
 		}
 	}
 	catch (Json::LogicError error) {
 		std::cout << "Exception: " << error.what() << std::endl;
 	}
-	ResourceManager::texture_atlas_map;
+
+	Json::Value json_data2;
+	std::ifstream in2("animation_map.json");
+	bool parsing_successful2 = reader.parse(in, json_data);
+	if (!parsing_successful2) {
+		// report to the user the failure and their locations in the document.
+		std::cout << "Failed to parse configuration\n" << reader.getFormatedErrorMessages();
+		return;
+	}
+	try {
+		std::vector<std::string> list = json_data.getMemberNames();
+		Json::Value def;
+		for (std::vector<std::string>::iterator i = list.begin(); i != list.end(); i++) {
+			std::cout << *i << std::endl;
+			ResourceManager::animation_atlas_map[*i] = json_data[*i].asString();
+
+		}
+	}
+	catch (Json::LogicError error) {
+		std::cout << "Exception: " << error.what() << std::endl;
+	}
 }
 

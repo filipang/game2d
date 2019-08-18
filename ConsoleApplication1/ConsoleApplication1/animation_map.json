@@ -1,0 +1,12 @@
+{
+  "man": {
+    "atlas": "folder",
+    "clip_array": [
+      {
+        "count": 8,
+        "name": "walk"
+      }
+    ],
+    "clip_count": 1
+  }
+}

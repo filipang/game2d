@@ -14,15 +14,25 @@ InputManager* InputManager::getInstance()
 
 void InputManager::handleKeyEvent(int keyCode) {
 	switch (keyCode) {
+	case 22:
+		printf("Pressed W\n");
+		break;
 	case 0: 
 		printf("Pressed A\n");
 		break;
-	case 22:
-		printf("Pressed W");
+	case 18:
+		printf("Pressed S\n");
+		break;
+	case 3:
+		printf("Pressed D\n");
+		break;
+	case 4:
+		printf("Pressed E\n");
+		break;
+	case 57:
+		printf("Pressed Space\n");
+		break;
 	}
-	printf("event handled\n Key Code %d\n", keyCode);
-
-
 }
 
 InputManager::InputManager() {

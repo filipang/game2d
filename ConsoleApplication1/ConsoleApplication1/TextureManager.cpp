@@ -26,7 +26,14 @@ void TextureManager::loadAtlas(std::string atl_name) {
 }
 
 moony::Texture TextureManager::getTextureByName(std::string name) {
+	
+	return loadedAtlases[ResourceManager::getInstance()->texture_atlas_map[name]]->findSubTexture(name);
+}
 
-	moony::Texture m_texture = loadedAtlases[ResourceManager::getInstance()->texture_atlas_map[name]]->findSubTexture(name);
+moony::Texture TextureManager::getTextureByName(std::string name, std::string atlas) {
+
+	moony::Texture m_texture = loadedAtlases[atlas]->findSubTexture(name);
+
 	return m_texture;
 }
+

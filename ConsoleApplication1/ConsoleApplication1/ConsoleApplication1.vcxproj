@@ -91,13 +91,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\include;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\sfml\include;C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\jsoncpp\include;D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\include;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\include</AdditionalIncludeDirectories>
       <ShowIncludes>true</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\lib;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\src\lib_json</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\jsoncpp\src\lib_json;C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\sfml\lib;D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\lib;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\src\lib_json</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -129,7 +129,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\include;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\sfml\include;C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\jsoncpp\include;D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\include;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\include</AdditionalIncludeDirectories>
       <ShowIncludes>true</ShowIncludes>
     </ClCompile>
     <Link>
@@ -137,7 +137,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\lib;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\src\lib_json</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\jsoncpp\src\lib_json;C:\Users\Filip\Documents\GameDev\game2d\ConsoleApplication1\sfml\lib;D:\Programming etc\C++\game2d\ConsoleApplication1\sfml\lib;D:\Programming etc\C++\game2d\ConsoleApplication1\jsoncpp\src\lib_json</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

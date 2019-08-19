@@ -8,16 +8,19 @@ class Animation
 {
 public:
 	std::string atlas;
-	moony::Texture animation;
+	moony::Texture* animation;
+	moony::Sprite* sprite;
 
-	sf::IntRect uvRect;
-	sf::Vector2u imageCount;
+	sf::IntRect* uvRect;
 	sf::Vector2u currentImage;
 
 	std::map<std::string, int>  frame_count_map;
 	std::map<std::string, int>	state_y_map;
 
 	std::string state;
+	std::string animation_name;
+
+	int reset;
 
 	float switchTime;
 	float totalTime;
@@ -31,7 +34,7 @@ public:
 
 	void setState(std::string state);
 
-	void loadAnimation(std::string animation);
+	moony::Texture* loadAnimation(std::string animation, moony::Texture* texture, sf::IntRect* rect, moony::Sprite* sprite);
 
 	Animation();
 

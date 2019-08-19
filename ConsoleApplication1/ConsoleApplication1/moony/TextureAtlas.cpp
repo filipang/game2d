@@ -98,7 +98,6 @@ using namespace moony;
 	const Texture TextureAtlas::findSubTexture(std::string name)
 	{
 		Texture texture;
-
 		for (auto& atlas : m_atlas_list)
 		{
 			if (atlas.m_texture_table.count(name) > 0)

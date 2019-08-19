@@ -31,7 +31,7 @@ ResourceManager::ResourceManager()
 		Json::Value def;
 		for (std::vector<std::string>::iterator i = list.begin(); i != list.end(); i++) {
 			std::cout << *i << std::endl;
-			ResourceManager::texture_atlas_map[*i] = json_data[*i]["atlas"].asString();
+			ResourceManager::texture_atlas_map[*i] = json_data[*i].asString();
 		
 		}
 	}
@@ -39,20 +39,28 @@ ResourceManager::ResourceManager()
 		std::cout << "Exception: " << error.what() << std::endl;
 	}
 
+	Json::Reader reader2;
 	Json::Value json_data2;
 	std::ifstream in2("animation_map.json");
-	bool parsing_successful2 = reader.parse(in, json_data);
+	bool parsing_successful2 = reader2.parse(in2, json_data2);
 	if (!parsing_successful2) {
 		// report to the user the failure and their locations in the document.
-		std::cout << "Failed to parse configuration\n" << reader.getFormatedErrorMessages();
+		std::cout << "Failed to parse configuration\n" << reader2.getFormatedErrorMessages();
 		return;
 	}
 	try {
-		std::vector<std::string> list = json_data.getMemberNames();
+		std::vector<std::string> list = json_data2.getMemberNames();
 		Json::Value def;
 		for (std::vector<std::string>::iterator i = list.begin(); i != list.end(); i++) {
 			std::cout << *i << std::endl;
-			ResourceManager::animation_atlas_map[*i] = json_data[*i].asString();
+
+			animation_atlas_map[*i].atlas		= json_data2[*i]["atlas"].asString();
+			animation_atlas_map[*i].clip_count	= json_data2[*i]["clip_count"].asInt();
+			animation_atlas_map[*i].max_frame_count = json_data2[*i]["max_frame_count"].asInt();
+			for (int ind = 0; ind < animation_atlas_map[*i].clip_count; ind++) {
+				std::cout << *(json_data2[*i]["clip_array"][ind].getMemberNames()).begin();
+				animation_atlas_map[*i].clip_array.push_back(std::make_pair(*(json_data2[*i]["clip_array"][ind].getMemberNames()).begin(), ind));
+			}
 
 		}
 	}

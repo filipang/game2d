@@ -1,12 +1,10 @@
 {
-  "man": {
-    "atlas": "folder",
+  "man.png": {
+    "atlas": "moony_texture_packer_ready",
     "clip_array": [
-      {
-        "count": 8,
-        "name": "walk"
-      }
+      { "walk": 8 }
     ],
-    "clip_count": 1
+    "clip_count": 1,
+    "max_frame_count": 8
   }
 }

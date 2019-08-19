@@ -11,7 +11,6 @@ void Animation::update(float deltaTime) {
 		
 
 		animation->m_rect.left = animation->m_rect.left + animation->m_rect.width;
-		sprite->m_subtexture = *animation;
 		// currentImage.x * uvRect->width;
 		//uvRect->top = currentImage.y * uvRect->height;
 		//uvRect->left += 0.01f;
@@ -21,6 +20,7 @@ void Animation::update(float deltaTime) {
 			currentImage.x = 0;
 			animation->m_rect.left = reset;
 		}
+		sprite->m_subtexture = *animation;
 
 	}
 }
@@ -37,21 +37,22 @@ void Animation::setState(std::string state) {
 	this->state = state;
 }
 
-moony::Texture* Animation::loadAnimation(std::string animation, moony::Texture* texture, sf::IntRect* rect, moony::Sprite* sprite) {
+moony::Texture* Animation::loadAnimation(std::string animation, moony::Texture* texture, moony::Sprite* sprite) {
 	animation_name	= animation;
 	max_frame_count	= ResourceManager::getInstance()->animation_atlas_map[animation].max_frame_count;
 	clip_count		= ResourceManager::getInstance()->animation_atlas_map[animation].clip_count;
 	//While the returned texture is not empty (width != 0)
 	this->animation = texture;
-	uvRect = &sprite->m_subtexture.m_rect;
+	this->sprite = sprite;
+
+	//uvRect = &sprite->m_subtexture.m_rect;
 	totalTime = 0.0f;
 	currentImage.x = 0;
-	this->sprite = sprite;
 
 	this->animation->m_rect.width = this->animation->m_rect.width / max_frame_count;
 	this->animation->m_rect.height = this->animation->m_rect.height / clip_count;
 	reset = this->animation->m_rect.left;
-	std::cout << uvRect->width << std::endl;
+	//std::cout << uvRect->width << std::endl;
 	return this->animation;
 }
 

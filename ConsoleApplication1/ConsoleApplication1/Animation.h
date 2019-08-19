@@ -34,7 +34,7 @@ public:
 
 	void setState(std::string state);
 
-	moony::Texture* loadAnimation(std::string animation, moony::Texture* texture, sf::IntRect* rect, moony::Sprite* sprite);
+	moony::Texture* loadAnimation(std::string animation, moony::Texture* texture, moony::Sprite* sprite);
 
 	Animation();
 

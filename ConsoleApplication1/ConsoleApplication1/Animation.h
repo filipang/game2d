@@ -28,6 +28,8 @@ public:
 	float clip_count;
 	float max_frame_count;
 
+	float spriteWidth;
+	float spriteHeight;
 public:
 
 	void update(float deltaTime);

@@ -15,7 +15,7 @@ void Animation::update(float deltaTime) {
 		//uvRect->top = currentImage.y * uvRect->height;
 		//uvRect->left += 0.01f;
 		currentImage.x++;
-		std::cout << "gotta.." << totalTime << " AT THE FRAME " << currentImage.x << std::endl;
+	//	std::cout << "gotta.." << totalTime << " AT THE FRAME " << currentImage.x << std::endl;
 		if (currentImage.x >= max_frame_count) {
 			currentImage.x = 0;
 			animation->m_rect.left = reset;
@@ -48,9 +48,10 @@ moony::Texture* Animation::loadAnimation(std::string animation, moony::Texture* 
 	//uvRect = &sprite->m_subtexture.m_rect;
 	totalTime = 0.0f;
 	currentImage.x = 0;
-
 	this->animation->m_rect.width = this->animation->m_rect.width / max_frame_count;
 	this->animation->m_rect.height = this->animation->m_rect.height / clip_count;
+	spriteWidth = this->animation->m_rect.width;
+	spriteHeight = this->animation->m_rect.height;
 	reset = this->animation->m_rect.left;
 	//std::cout << uvRect->width << std::endl;
 	return this->animation;

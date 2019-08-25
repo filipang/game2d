@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "InputManager.h"
 #include <iostream>
+#include "Entity.h"
 
 InputManager* InputManager::instance = 0;
 
@@ -12,7 +13,32 @@ InputManager* InputManager::getInstance()
 	return InputManager::instance;
 }
 
-void InputManager::handleKeyEvent(int keyCode) {
+void InputManager::handleEvent(sf::Event event, Entity player) {
+	
+	switch (event.type) {
+	case event.KeyPressed:
+		std::cout << typeid(event.key.code).name() << std::endl;
+		player.spritePtr->move(20.0f, 0.0f);
+	default:
+		break;
+	}
+	
+	
+	
+	
+	/*switch (keyCode)
+	{
+		// Process the up, down, left and right keys
+	case sf::Keyboard::Up:
+		//upFlag = true; break;
+	case sf::Keyboard::Down: 
+		//downFlag = true; break;
+	case sf::Keyboard::Left: 
+		//leftFlag = true; break;
+	case sf::Keyboard::Right: 
+		//rightFlag = true; break;
+	default: break;
+	}
 	switch (keyCode) {
 	case 22:
 		printf("Pressed W\n");
@@ -33,6 +59,7 @@ void InputManager::handleKeyEvent(int keyCode) {
 		printf("Pressed Space\n");
 		break;
 	}
+	*/
 }
 
 InputManager::InputManager() {

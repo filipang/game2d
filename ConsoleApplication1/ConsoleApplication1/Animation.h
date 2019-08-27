@@ -8,7 +8,7 @@ class Animation
 {
 public:
 	std::string atlas;
-	moony::Texture* animation;
+	//moony::Texture* animation;
 	moony::Sprite* sprite;
 
 	sf::IntRect* uvRect;

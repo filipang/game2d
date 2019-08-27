@@ -13,16 +13,24 @@
 
 }*/
 
-Entity::Entity(float x, float y, std::string animName, std::string animState, moony::Texture* texturePtr, moony::Sprite* spritePtr, Animation* a)
+Entity::Entity(float x, float y, std::string animName, std::string animState)
 {
-	this->spritePtr = spritePtr;
-	this->texturePtr = texturePtr;
 
-	a->loadAnimation(animName, texturePtr, spritePtr);
-	a->setState(animState);
-	spritePtr->setPosition(x, 200.0f);
-	printf("%d", spritePtr->getPosition().y);
-	spritePtr->setOrigin(a->spriteWidth / 2, a->spriteHeight / 2);
+	Entity::texture = new moony::Texture(TextureManager::getInstance()->getTextureByName("man.png"));
+	Entity::sprite = new moony::Sprite(*texture);
+	animation = new Animation();
+
+	animation->switchTime = 0.0001f;
+	animation->loadAnimation(animName, texture, sprite);
+	animation->setState(animState);
+	animation->update(0.0f);
+	sprite->setPosition(x, 200.0f);
+	std::cout << sprite->getPosition().y;
+	sprite->setOrigin(animation->spriteWidth / 2, animation->spriteHeight / 2);
+}
+
+void Entity::update(float deltaTime) {
+	Entity::animation->update(deltaTime);
 }
 
 

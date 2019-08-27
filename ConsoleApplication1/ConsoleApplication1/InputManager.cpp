@@ -13,12 +13,23 @@ InputManager* InputManager::getInstance()
 	return InputManager::instance;
 }
 
-void InputManager::handleEvent(sf::Event event, Entity player) {
+void InputManager::handleInput(Entity* player) {
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+		//player->move
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+
+	}
+}
+
+void InputManager::handleEvent(sf::Event event, Entity* player) {
 	
 	switch (event.type) {
 	case event.KeyPressed:
 		std::cout << typeid(event.key.code).name() << std::endl;
-		player.spritePtr->move(20.0f, 0.0f);
+		player->sprite->move(20.0f, 0.0f);
+
 	default:
 		break;
 	}

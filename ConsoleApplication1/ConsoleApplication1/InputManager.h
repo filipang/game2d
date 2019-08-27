@@ -5,9 +5,12 @@ class InputManager
 {
 public:
 	static InputManager* instance;
-	void handleEvent(sf::Event event, Entity player);
 public:
 	static InputManager* getInstance();
+
+	void handleInput(Entity* player);
+
+	void handleEvent(sf::Event event, Entity* player);
 
 	InputManager();
 };

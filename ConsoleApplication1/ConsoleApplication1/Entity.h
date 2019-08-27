@@ -10,15 +10,14 @@ public:
 
 	std::string name;
 
-
-	moony::Sprite* spritePtr;
-	moony::Texture* texturePtr;
-
-	Animation* a;
+	Animation* animation;
+	moony::Sprite* sprite;
+	moony::Texture* texture;
 
 public:
 
-	Entity(float x, float y, std::string animName, std::string animState, moony::Texture* texturePtr, moony::Sprite* spritePtr, Animation* a);
+	Entity(float x, float y, std::string animName, std::string animState);
+	void update(float deltaTime);
 	~Entity();
 };
 

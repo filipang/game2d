@@ -14,12 +14,20 @@ InputManager* InputManager::getInstance()
 }
 
 void InputManager::handleInput(Entity* player) {
-
+	player->speed = 0.0f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		//player->move
+		player->speed -= 220.0f;
+		if (player->faceRight) {
+			player->faceRight = false;
+			player->sprite->setScale(-1.0f, 1.0f);
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-
+		player->speed += 220.0f;
+		if (!player->faceRight) {
+			player->faceRight = true;
+			player->sprite->setScale(1.0f, 1.0f);
+		}
 	}
 }
 
@@ -28,7 +36,7 @@ void InputManager::handleEvent(sf::Event event, Entity* player) {
 	switch (event.type) {
 	case event.KeyPressed:
 		std::cout << typeid(event.key.code).name() << std::endl;
-		player->sprite->move(20.0f, 0.0f);
+		//player->sprite->move(20.0f, 0.0f);
 
 	default:
 		break;

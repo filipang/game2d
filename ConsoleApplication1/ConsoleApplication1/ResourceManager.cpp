@@ -69,3 +69,8 @@ ResourceManager::ResourceManager()
 	}
 }
 
+
+void ResourceManager::loadAtlas(std::string atl_name) {
+	texture_atlas.loadFromFile("atlases/" + atl_name + ".mtpf");
+}
+

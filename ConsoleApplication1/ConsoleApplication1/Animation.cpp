@@ -6,7 +6,6 @@
 
 void Animation::update(float deltaTime) {
 	totalTime += deltaTime;
-	std::cout << "SIZOFTEXTURE: " << sizeof(sprite->m_subtexture) << std::endl;
 	//animation = &sprite->m_subtexture;
 	if (totalTime >= switchTime) {
 		totalTime -= switchTime;
@@ -18,7 +17,6 @@ void Animation::update(float deltaTime) {
 		//uvRect->top = currentImage.y * uvRect->height;
 		//uvRect->left += 0.01f;
 		currentImage.x++;
-		std::cout << "gotta.." << totalTime << " AT THE FRAME " << currentImage.x << std::endl;
 		if (currentImage.x >= max_frame_count) {
 			currentImage.x = 0;
 			sprite->m_subtexture.m_rect.left = reset;
@@ -53,8 +51,8 @@ moony::Texture* Animation::loadAnimation(std::string animation, moony::Texture* 
 	currentImage.x = 0;
 	sprite->m_subtexture.m_rect.width = sprite->m_subtexture.m_rect.width / max_frame_count;
 	sprite->m_subtexture.m_rect.height = sprite->m_subtexture.m_rect.height / clip_count;
-	//spriteWidth = this->animation->m_rect.width;
-	//spriteHeight = this->animation->m_rect.height;
+	spriteWidth = sprite->m_subtexture.m_rect.width;
+	spriteHeight = sprite->m_subtexture.m_rect.height;
 	reset = sprite->m_subtexture.m_rect.left;
 	//std::cout << uvRect->width << std::endl;
 	return &sprite->m_subtexture;

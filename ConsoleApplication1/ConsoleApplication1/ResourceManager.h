@@ -2,6 +2,7 @@
 #include <map>
 #include <tuple>
 #include <fstream>
+#include "moony/TextureAtlas.h"
 #include <SFML/Graphics.hpp>
 
 class ResourceManager
@@ -17,17 +18,18 @@ class ResourceManager
 public:
 	static ResourceManager* instance;
 
+	moony::TextureAtlas texture_atlas;
+
 	std::map<std::string, std::string> texture_atlas_map;
+
 	std::map<std::string, animation_entry> animation_atlas_map;
+
 public:
 	static ResourceManager* getInstance();
 
-	void loadAnimationMap() {
-		
-	}
+	void loadAtlas(std::string atl_name);
 
 	ResourceManager();
-
 	
 };
 

@@ -7,6 +7,8 @@ class Entity
 public:
 
 	float x, y;
+	float speed;
+	bool faceRight;
 
 	std::string name;
 
@@ -16,7 +18,8 @@ public:
 
 public:
 
-	Entity(float x, float y, std::string animName, std::string animState);
+	Entity(float x, float y, std::string animName, std::string defaultState, float speed);
+	void move(float deltaTime);
 	void update(float deltaTime);
 	~Entity();
 };

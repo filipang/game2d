@@ -31,7 +31,7 @@ Entity::Entity(float x, float y, std::string animName, std::string defaultState,
 }
 
 void Entity::move(float deltaTime) {
-	Entity::sprite->move(deltaTime*speed, 0.0f);
+	Entity::sprite->move(deltaTime*speed*norm_velocity, 0.0f);
 }
 
 void Entity::update(float deltaTime) {

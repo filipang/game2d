@@ -13,33 +13,36 @@ InputManager* InputManager::getInstance()
 	return InputManager::instance;
 }
 
-void InputManager::handleInput(Entity* player) {
-	player->speed = 0.0f;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		player->speed -= 220.0f;
-		if (player->faceRight) {
-			player->faceRight = false;
-			player->sprite->setScale(-1.0f, 1.0f);
-		}
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		player->speed += 220.0f;
-		if (!player->faceRight) {
-			player->faceRight = true;
-			player->sprite->setScale(1.0f, 1.0f);
-		}
+void InputManager::handleInput() {
+	for (InputRegistrable* obj : registeredList) {
+		obj->handleInput();
 	}
 }
 
-void InputManager::handleEvent(sf::Event event, Entity* player) {
-	
-	switch (event.type) {
-	case event.KeyPressed:
-		std::cout << typeid(event.key.code).name() << std::endl;
-		//player->sprite->move(20.0f, 0.0f);
+void InputManager::registerObj(InputRegistrable *obj)
+{
+	registeredList.insert(obj);
+}
 
-	default:
-		break;
+void InputManager::unregisterObj(InputRegistrable *obj)
+{
+	registeredList.erase(obj);
+}
+
+void InputManager::handleEvent(sf::RenderWindow* app) {
+	sf::Event event;
+	while (app->pollEvent(event))
+	{
+		switch (event.type){
+		case event.KeyPressed:
+			std::cout << typeid(event.key.code).name() << std::endl;
+			break;
+		case event.Closed:
+			app->close();
+			break;
+		default:
+			break;
+		}
 	}
 	
 	

@@ -1,14 +1,61 @@
-//{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by ConsoleApplication1.rc
+#pragma once
+class IResourceSink
+{
+public:
+	virtual void OnDestroy(class Resource*) = 0;
+};
+class IRefCounted
+{
+public:
+	virtual void AddRef() = 0;
+	virtual void Release() = 0;
+};
 
-// Next default values for new objects
-// 
-#ifdef APSTUDIO_INVOKED
-#ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        101
-#define _APS_NEXT_COMMAND_VALUE         40001
-#define _APS_NEXT_CONTROL_VALUE         1001
-#define _APS_NEXT_SYMED_VALUE           101
-#endif
-#endif
+template<class sink>
+class SinkContainer
+{
+protected:
+	std::vector<sink*> _sinks;
+	void AddSink(sink* a);
+	void RemoveSink(sink* a);
+};
+
+class Resource : SinkContainer<IResourceSink>, IRefCounted
+{
+	int ref = 0;
+public:
+	void RegisterSink(IResourceSink *o);
+	void UnregisterSink(IResourceSink *o);
+	// from IRefCounted
+	virtual void AddRef() override;
+	virtual void Release() override;
+};
+
+
+
+class ResourceMgr : public IResourceSink
+{
+	std::vector<Resource*> _atlasses;
+
+public:
+	virtual void OnDestroy(Resource* r) override
+	{
+		auto it = std::find(_atlasses.begin(), _atlasses.end(), r);
+		if (it != _atlasses.end())
+			_atlasses.erase(it);
+	}
+	void AddResource(Resource* a)
+	{
+		_atlasses.push_back(a);
+		a->RegisterSink(this);
+	}
+};
+
+ResourceMgr rmg;
+Resource* createResource()
+{
+	auto *a = new Resource();
+	rmg.AddResource(a);
+	return a;
+}
+

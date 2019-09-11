@@ -177,7 +177,7 @@
     <ClInclude Include="moony\Texture.h" />
     <ClInclude Include="moony\TextureAtlas.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="TextureManager.h" />
@@ -196,6 +196,7 @@
     <ClCompile Include="moony\Texture.cpp" />
     <ClCompile Include="moony\TextureAtlas.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />

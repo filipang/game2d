@@ -3,6 +3,7 @@
 #include <tuple>
 #include <fstream>
 #include "moony/TextureAtlas.h"
+#include "Resource.h"
 #include <SFML/Graphics.hpp>
 
 class ResourceManager
@@ -17,6 +18,8 @@ class ResourceManager
 
 public:
 	static ResourceManager* instance;
+
+	std::vector<Resource*> _atlasses;
 
 	moony::TextureAtlas texture_atlas;
 

@@ -14,7 +14,7 @@ public:
 template<class sink>
 class SinkContainer
 {
-protected:
+public:
 	std::vector<sink*> _sinks;
 	void AddSink(sink* a);
 	void RemoveSink(sink* a);
@@ -38,24 +38,8 @@ class ResourceMgr : public IResourceSink
 	std::vector<Resource*> _atlasses;
 
 public:
-	virtual void OnDestroy(Resource* r) override
-	{
-		auto it = std::find(_atlasses.begin(), _atlasses.end(), r);
-		if (it != _atlasses.end())
-			_atlasses.erase(it);
-	}
-	void AddResource(Resource* a)
-	{
-		_atlasses.push_back(a);
-		a->RegisterSink(this);
-	}
+	virtual void OnDestroy(Resource* r) override;
+	void AddResource(Resource* a);
 };
 
-ResourceMgr rmg;
-Resource* createResource()
-{
-	auto *a = new Resource();
-	rmg.AddResource(a);
-	return a;
-}
 

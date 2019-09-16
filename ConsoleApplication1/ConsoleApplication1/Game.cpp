@@ -4,9 +4,13 @@
 #include "TextureManager.h"
 #include "ResourceManager.h"
 #include "InputManager.h"
+#include "EventManager.h"
+#include "EventManager.h"
+#include "Manager.h"
 #include "moony/SpriteBatch.h"
 #include "Animation.h"
 #include "Game.h"
+#include "IUnknown.h"
 #include "Player.h"
 
 Game::Game()
@@ -20,13 +24,42 @@ Game::~Game()
 
 void Game::handleInput()
 {
+	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Equal)) {
+		std::cout << "Before.. " <<player->GetRefCount() << std::endl;
 		InputManager::getInstance()->registerObj(player);
+		std::cout << "After.. " <<player->GetRefCount() << std::endl;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Dash)) {
+		std::cout << "Before.. " << player->GetRefCount() << std::endl;
 		InputManager::getInstance()->unregisterObj(player);
+		std::cout << "After.. " << player->GetRefCount() << std::endl;
 	}
+	*/
+}
+
+void Game::handleEvent(sf::Event e) {
+	switch (e.type) {
+	case sf::Event::KeyPressed:
+		if (e.key.code == sf::Keyboard::Equal) {
+			std::cout << "Before.. " << player->GetRefCount() << std::endl;
+			InputManager::getInstance()->registerObj(player);
+			std::cout << "After.. " << player->GetRefCount() << std::endl;
+		}
+		if (e.key.code == sf::Keyboard::Dash) {
+			std::cout << "Before.. " << player->GetRefCount() << std::endl;
+			InputManager::getInstance()->unregisterObj(player);
+			std::cout << "After.. " << player->GetRefCount() << std::endl;
+		}
+		break;
+	case sf::Event::Closed:
+		app->close();
+		break;
+	default:
+		break;
+	}
+
 }
 
 void Game::init()
@@ -38,15 +71,18 @@ void Game::init()
 	
 	batch = new moony::SpriteBatch();
 	player = new Player(200.0f, 200.0f, "man.png", "walk", 220.0f);
-	InputManager::getInstance()->registerObj(player);
-	InputManager::getInstance()->registerObj(this);
+
+	Manager::getInstance()->registerManager(InputManager::getInstance());
+	Manager::getInstance()->registerManager(EventManager::getInstance());
+	Manager::getInstance()->registerObj(player);
+	Manager::getInstance()->registerObj(this);
 
 }
 
 void Game::update(float deltaTime)
 {
 	
-	InputManager::getInstance()->handleEvent(app);
+	EventManager::getInstance()->handleEvent(app);
 	InputManager::getInstance()->handleInput();
 
 	player->update(deltaTime);

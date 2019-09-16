@@ -1,6 +1,6 @@
 #pragma once
 
-class Game : InputRegistrable
+class Game : public CoUnknown2<IInputReciever, IEventReciever>
 {
 public:
 
@@ -19,6 +19,7 @@ public:
 	~Game();
 
 	void handleInput();
+	void handleEvent(sf::Event e);
 	void init();
 	void update(float deltaTime);
 };

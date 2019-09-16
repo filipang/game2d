@@ -165,12 +165,15 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EventManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="InputRegistrable.h" />
+    <ClInclude Include="Interfaces.h" />
+    <ClInclude Include="IUnknown.h" />
     <ClInclude Include="json-forwards.h" />
     <ClInclude Include="json.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="moony\Log.h" />
     <ClInclude Include="moony\Sprite.h" />
     <ClInclude Include="moony\SpriteBatch.h" />
@@ -185,11 +188,13 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="InputRegistrable.cpp" />
+    <ClCompile Include="IUnknown.cpp" />
     <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="moony\Log.cpp" />
     <ClCompile Include="moony\Sprite.cpp" />
     <ClCompile Include="moony\SpriteBatch.cpp" />

@@ -1,14 +1,15 @@
+#pragma once
 #include <vector>
 #include "Resource.h"
-#pragma once
 
-
-void SinkContainer<class sink>::AddSink(class sink* a) 
+template<class sink>
+void SinkContainer<sink>::AddSink(sink* a) 
 { 
 	_sinks.push_back(a); 
 }
 
-void  SinkContainer<class sink>::RemoveSink(class sink* a)
+template<class sink>
+void SinkContainer<sink>::RemoveSink(sink* a)
 {
 	auto it = std::find(_sinks.begin(), _sinks.end(), a);
 	if (it != _sinks.end())
@@ -35,6 +36,7 @@ void Resource::AddRef()
 
 void Resource::Release() 
 {
+	
 	ref--;
 	if (ref == 0)
 		for (auto* sink : _sinks)
@@ -42,27 +44,20 @@ void Resource::Release()
 	delete this;
 }
 
-
-
-
-class ResourceMgr : public IResourceSink
+void ResourceMgr::OnDestroy(class Resource* r)
 {
-	std::vector<Resource*> _atlasses;
+	auto it = std::find(_atlasses.begin(), _atlasses.end(), r);
+	if (it != _atlasses.end())
+		_atlasses.erase(it);
+}
 
-public:
-	virtual void OnDestroy(class Resource* r) override
-	{
-		auto it = std::find(_atlasses.begin(), _atlasses.end(), r);
-		if (it != _atlasses.end())
-			_atlasses.erase(it);
-	}
-	void AddResource(Resource* a)
-	{
-		_atlasses.push_back(a);
-		a->RegisterSink(this);
-	}
-};
+void ResourceMgr::AddResource(Resource* a)
+{
+	_atlasses.push_back(a);
+	a->RegisterSink(this);
+}
 
+/*
 ResourceMgr rmg;
 Resource* createResource()
 {
@@ -70,4 +65,5 @@ Resource* createResource()
 	rmg.AddResource(a);
 	return a;
 }
+*/
 

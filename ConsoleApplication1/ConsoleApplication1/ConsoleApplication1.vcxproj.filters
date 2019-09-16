@@ -5,16 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\mgrs">
-      <UniqueIdentifier>{9b07db7d-4531-4d06-92e3-dbe3fa7a80e9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\mgrs">
       <UniqueIdentifier>{91b9ae61-a251-4582-8890-97bf004a13f0}</UniqueIdentifier>
@@ -28,6 +21,16 @@
     <Filter Include="Source Files\utils\moony">
       <UniqueIdentifier>{2da7e4de-5080-482e-967d-552ae1d20fe3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\interfaces">
+      <UniqueIdentifier>{1eff5e8a-9ff7-4441-aae2-9238ffda1758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\mgrs">
+      <UniqueIdentifier>{9b07db7d-4531-4d06-92e3-dbe3fa7a80e9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\utils">
       <UniqueIdentifier>{ce5c7ccc-fde9-499b-b6a7-1cc339f3e86e}</UniqueIdentifier>
     </Filter>
@@ -36,9 +39,6 @@
     </Filter>
     <Filter Include="Header Files\utils\moony">
       <UniqueIdentifier>{0317faec-5309-49a1-9829-ece6d9e55fa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\interfaces">
-      <UniqueIdentifier>{1eff5e8a-9ff7-4441-aae2-9238ffda1758}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\interfaces">
       <UniqueIdentifier>{4175ee40-3e14-4d88-a630-6f51ad92e3bc}</UniqueIdentifier>
@@ -90,14 +90,23 @@
     <ClInclude Include="json.h">
       <Filter>Header Files\utils\json</Filter>
     </ClInclude>
-    <ClInclude Include="InputRegistrable.h">
-      <Filter>Header Files\interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IUnknown.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files\mgrs</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Header Files\mgrs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,14 +152,20 @@
     <ClCompile Include="moony\Sprite.cpp">
       <Filter>Source Files\utils\moony</Filter>
     </ClCompile>
-    <ClCompile Include="InputRegistrable.cpp">
-      <Filter>Source Files\interfaces</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Resource.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IUnknown.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Source Files\mgrs</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Source Files\mgrs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

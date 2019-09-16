@@ -1,3 +1,5 @@
+#include "Interfaces.h"
+#include "Entity.h"
 #include "Player.h"
 
 

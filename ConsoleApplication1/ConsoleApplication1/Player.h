@@ -1,8 +1,6 @@
 #pragma once
-#include "InputRegistrable.h"
-#include "Entity.h"
 
-class Player : public InputRegistrable, public Entity
+class Player : public CoUnknown1<IInputReciever>, public Entity
 {
 public:
 

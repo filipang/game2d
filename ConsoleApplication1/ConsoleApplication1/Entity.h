@@ -1,7 +1,6 @@
 #pragma once
 #include "Animation.h"
 #include "TextureManager.h"
-#include "InputRegistrable.h"
 
 class Entity
 {

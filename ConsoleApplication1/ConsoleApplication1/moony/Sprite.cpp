@@ -12,3 +12,4 @@ moony::Sprite::Sprite(const Texture& subtexture, int layer, sf::Color color)
 	m_layer = layer;
 	m_color = color;
 }
+

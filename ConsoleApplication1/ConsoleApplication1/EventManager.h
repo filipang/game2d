@@ -5,21 +5,21 @@
 #include "IUnknown.h"
 #include "Interfaces.h"
 
-class InputManager : public IRegisterUnk
+class EventManager : public IRegisterUnk
 {
 public:
-	static InputManager* instance;
+	static EventManager* instance;
 
-	std::set<IInputReciever*> registeredList;
+	std::set<IEventReciever*> registeredList;
 public:
-	static InputManager* getInstance();
-
-	void handleInput();
+	static EventManager* getInstance();
 
 	void registerObj(IUnknown* obj);
 
 	void unregisterObj(IUnknown *obj);
 
-	InputManager();
+	void handleEvent(sf::RenderWindow* app);
+
+	EventManager();
 };
 

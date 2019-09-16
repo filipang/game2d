@@ -4,13 +4,15 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include "../IUnknown.h"
+#include "../Interfaces.h"
 #include <SFML/Graphics.hpp>
 
 
 namespace moony
 {
 	// The Texture class is similar to the SFML sf::Texture class but was designed to work specifically with the TextureAtlas class.
-	struct Texture
+	struct Texture : CoUnknown1<ITexture>
 	{
 		Texture(const sf::Texture* texture = NULL, sf::IntRect rect = sf::IntRect());
 

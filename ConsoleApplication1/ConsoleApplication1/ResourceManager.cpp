@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include "ResourceManager.h"
+#include "Interfaces.h"
 #include "json/json.h"
 
 ResourceManager* ResourceManager::instance = NULL;
@@ -68,7 +69,6 @@ ResourceManager::ResourceManager()
 		std::cout << "Exception: " << error.what() << std::endl;
 	}
 }
-
 
 void ResourceManager::loadAtlas(std::string atl_name) {
 	texture_atlas.loadFromFile("atlases/" + atl_name + ".mtpf");

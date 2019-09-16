@@ -6,3 +6,4 @@ Texture::Texture(const sf::Texture* texture, sf::IntRect rect)
 	m_texture = texture;
 	m_rect = rect;
 }
+

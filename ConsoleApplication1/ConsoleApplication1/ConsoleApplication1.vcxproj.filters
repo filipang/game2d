@@ -108,6 +108,9 @@
     <ClInclude Include="EventManager.h">
       <Filter>Header Files\mgrs</Filter>
     </ClInclude>
+    <ClInclude Include="UnkSmartPtr.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

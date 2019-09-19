@@ -2,8 +2,12 @@
 
 #define PURE = 0
 
+const int IID_IUnknown = 0;
+
 class IUnknown
 {
+public:
+	static const int myType = IID_IUnknown;
 public:
 	virtual bool QueryInterface(int type, void** ppv) PURE;
 	virtual int AddRef() PURE;
@@ -48,11 +52,11 @@ public:
 public:
 	virtual bool QueryInterface(int type, void** ppv) override
 	{
+		*ppv = nullptr;
 		if (type == I1::myType)
-		{
 			*ppv = (void*)(static_cast<I1*>(this));
-			return true;
-		}
+
+		if (*ppv) { AddRef(); return true; }
 		return false;
 	}
 
@@ -67,16 +71,16 @@ public:
 public:
 	virtual bool QueryInterface(int type, void** ppv) override
 	{
+		*ppv = nullptr;
 		if (type == I1::myType)
 		{
 			*ppv = (void*)(static_cast<I1*>(this));
-			return true;
 		}
 		if (type == I2::myType)
 		{
 			*ppv = (void*)(static_cast<I2*>(this));
-			return true;
 		}
+		if (*ppv) { AddRef(); return true; }
 		return false;
 	}
 };
@@ -91,21 +95,20 @@ public:
 public:
 	virtual bool QueryInterface(int type, void** ppv) override
 	{
+		*ppv = nullptr;
 		if (type == I1::myType)
 		{
 			*ppv = (void*)(static_cast<I1*>(this));
-			return true;
 		}
 		if (type == I2::myType)
 		{
 			*ppv = (void*)(static_cast<I2*>(this));
-			return true;
 		}
 		if (type == I3::myType)
 		{
 			*ppv = (void*)(static_cast<I3*>(this));
-			return true;
 		}
+		if (*ppv) { AddRef(); return true; }
 		return false;
 	}
 };

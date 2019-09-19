@@ -3,6 +3,7 @@
 #include <string>
 #include "IUnknown.h"
 #include "SFML/Graphics.hpp"
+#include "UnkSmartPtr.h"
 
 enum iterfaces
 {
@@ -21,18 +22,21 @@ public:
 
 	virtual std::string GetName() PURE;
 };
+typedef UnkSmartPtr<IResource>	IResourcePtr;
 
 class ITexture : public virtual IUnknown
 {
 public:
 	static const int myType = IID_ITexture;
 };
+typedef UnkSmartPtr<ITexture>	ITexturePtr;
 
 class ISprite : public virtual IUnknown
 {
 public:
 	static const int myType = IID_ISprite;
 };
+typedef UnkSmartPtr<ISprite>	ISpritePtr;
 
 class IInputReciever : public virtual IUnknown
 {
@@ -41,6 +45,7 @@ public:
 
 	virtual void handleInput() PURE;
 };
+typedef UnkSmartPtr<IInputReciever>	IInputRecieverPtr;
 
 class IEventReciever : public virtual IUnknown
 {
@@ -49,6 +54,7 @@ public:
 
 	virtual void handleEvent(sf::Event e) PURE;
 };
+typedef UnkSmartPtr<IEventReciever>	IEventRecieverPtr;
 
 class ISerialize : public virtual IUnknown
 {
@@ -59,3 +65,4 @@ public:
 	virtual size_t pushToBuffer(unsigned char* buffer, size_t offset) PURE;
 	virtual size_t getSizeInBytes() PURE;
 };
+typedef UnkSmartPtr<ISerialize>	ISerializePtr;

@@ -12,7 +12,8 @@ enum iterfaces
 	IID_IInputReciever,
 	IID_IEventReciever,
 	IID_ISerialize,
-	IID_ISprite
+	IID_ISprite,
+	IID_IDrawable
 };
 
 class IResource : public virtual IUnknown
@@ -30,6 +31,16 @@ public:
 	static const int myType = IID_ITexture;
 };
 typedef UnkSmartPtr<ITexture>	ITexturePtr;
+
+class IDrawable : public virtual IUnknown
+{
+public:
+	static const int myType = IID_IDrawable;
+
+	virtual void aquireResources() PURE;
+	virtual void releaseResources() PURE;
+};
+typedef UnkSmartPtr<IDrawable>	IDrawablePtr;
 
 class ISprite : public virtual IUnknown
 {

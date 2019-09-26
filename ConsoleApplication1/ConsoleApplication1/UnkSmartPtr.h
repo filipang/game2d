@@ -5,7 +5,6 @@ class UnkSmartPtr
 {
 private:
 	IFace *_pointer;
-
 public:
 	UnkSmartPtr()
 	{
@@ -30,6 +29,9 @@ public:
 		if (_pointer)
 			_pointer->AddRef();
 	}
+	UnkSmartPtr(UnkSmartPtr&& other)
+		: _pointer( std::exchange( other._pointer, nullptr ) )
+	{}
 	template<class IFaceOther>
 	UnkSmartPtr(const UnkSmartPtr<IFaceOther>& other)
 	{
@@ -73,6 +75,14 @@ public:
 			_pointer->AddRef();
 		return *this;
 	}
+	UnkSmartPtr& operator=(UnkSmartPtr&& other)
+	{
+		if (_pointer)
+			_pointer->Release();
+		_pointer = std::exchange(other._pointer, nullptr);
+		return *this;
+	}
+
 	template<class IFaceOther>
 	UnkSmartPtr& operator=(const UnkSmartPtr<IFaceOther>& other)
 	{
@@ -83,6 +93,7 @@ public:
 		else _pointer = nullptr;
 		return *this;
 	}
+
 
 	IFace *operator->() const
 	{

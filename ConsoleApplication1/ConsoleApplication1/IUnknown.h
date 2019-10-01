@@ -1,4 +1,5 @@
 #pragma once
+#include "UnkSmartPtr.h"
 
 #define PURE = 0
 
@@ -14,12 +15,13 @@ public:
 	virtual int Release() PURE;
 	virtual int GetRefCount() PURE;
 };
+typedef UnkSmartPtr<IUnknown> IUnknownPtr;
 
 class IRegisterUnk
 {
 public:
-	virtual void registerObj(IUnknown* obj) PURE;
-	virtual void unregisterObj(IUnknown *obj) PURE;
+	virtual void registerObj(IUnknownPtr obj) PURE;
+	virtual void unregisterObj(IUnknownPtr obj) PURE;
 };
 
 #define ADDREFRELEASE			private:									\

@@ -1,7 +1,7 @@
 #include "Interfaces.h"
 #include "Entity.h"
 #include "Player.h"
-
+#include <iostream>
 
 
 void Player::handleInput()
@@ -20,6 +20,9 @@ void Player::handleInput()
 			faceRight = true;
 			sprite->setScale(1.0f, 1.0f);
 		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		std::cout << "PLAYER HAS THIS MANY REFS: " << this->GetRefCount() << std::endl;
 	}
 }
 

@@ -17,19 +17,19 @@ TextureManager* TextureManager::getInstance()
 TextureManager::TextureManager(){}
 
 
-void TextureManager::registerObj(IUnknown *obj)
+void TextureManager::registerObj(IUnknownPtr obj)
 {
-	ITexture *toAdd = nullptr;
+	ITexturePtr toAdd = nullptr;
 	if (obj->QueryInterface(ITexture::myType, (void**)&toAdd) == false)
 		return;
 
-	toAdd->AddRef();
+	//toAdd->AddRef();
 	registeredList.insert(toAdd);
 }
 
-void TextureManager::unregisterObj(IUnknown *obj)
+void TextureManager::unregisterObj(IUnknownPtr obj)
 {
-	ITexture *toRem = nullptr;
+	ITexturePtr toRem = nullptr;
 	if (obj->QueryInterface(ITexture::myType, (void**)&toRem) == false)
 		return;
 

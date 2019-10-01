@@ -1,19 +1,19 @@
 #pragma once
 #include "Interfaces.h"
 
-class Manager : public IRegisterUnk
+class Manager
 {
 public:
 	static Manager* instance;
 
 	std::set<IRegisterUnk*> registeredMgrList;
-	std::set<void*> registeredObjList;
+	std::set<IUnknownPtr> registeredObjList;
 public:
 	static Manager* getInstance();
 
 public:
 	void registerManager(IRegisterUnk* obj);
 	void unregisterManager(IRegisterUnk *obj);
-	virtual void registerObj(IUnknown* obj) override;
-	virtual void unregisterObj(IUnknown *obj) override;
+	void registerObj(IUnknown* obj);
+	void unregisterObj(IUnknown* obj);
 };

@@ -20,18 +20,20 @@ void Manager::unregisterManager(IRegisterUnk *obj)
 {
 	registeredMgrList.erase(obj);
 }
-void Manager::registerObj(IUnknown *obj)
+
+void Manager::registerObj(IUnknown* obj)
 {
 	obj->AddRef();
-	registeredObjList.insert(obj);
+	//registeredObjList.insert(obj);
 	for (auto mgr : registeredMgrList)
 		mgr->registerObj(obj);
+	obj->Release();
 }
 
-void Manager::unregisterObj(IUnknown *obj)
+void Manager::unregisterObj(IUnknown* obj)
 {
-	registeredObjList.erase(obj);
-	obj->Release();
+	obj->AddRef();
 	for (auto mgr : registeredMgrList)
 		mgr->unregisterObj(obj);
+	obj->Release();
 }

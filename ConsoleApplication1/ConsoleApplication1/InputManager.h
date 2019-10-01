@@ -10,15 +10,15 @@ class InputManager : public IRegisterUnk
 public:
 	static InputManager* instance;
 
-	std::set<IInputReciever*> registeredList;
+	std::set<IInputRecieverPtr> registeredList;
 public:
 	static InputManager* getInstance();
 
 	void handleInput();
 
-	void registerObj(IUnknown* obj);
+	void registerObj(IUnknownPtr obj) override;
 
-	void unregisterObj(IUnknown *obj);
+	void unregisterObj(IUnknownPtr obj) override;
 
 	InputManager();
 };

@@ -19,9 +19,9 @@ Entity::Entity(float x, float y, std::string animName, std::string defaultState,
 
 	faceRight = true;
 	Entity::texture = new moony::Texture(TextureManager::getInstance()->getTextureByName("man.png"));
-	Manager::getInstance()->registerObj(Entity::texture);
+	//Manager::getInstance()->registerObj(Entity::texture);
 	Entity::sprite = new moony::Sprite(*texture);
-	Manager::getInstance()->registerObj(Entity::sprite);
+	//Manager::getInstance()->registerObj(Entity::sprite);
 	animation = new Animation();
 
 	animation->switchTime = 0.04f;

@@ -12,16 +12,16 @@ class TextureManager : public IRegisterUnk
 private:
 	static TextureManager* instance;
 
-	std::set<ITexture*> registeredList;
+	std::set<ITexturePtr> registeredList;
 
 public:
 	static TextureManager* getInstance();
 
 	TextureManager();
 
-	virtual void registerObj(IUnknown* obj) override;
+	virtual void registerObj(IUnknownPtr obj) override;
 
-	virtual void unregisterObj(IUnknown *obj) override;
+	virtual void unregisterObj(IUnknownPtr obj) override;
 
 	moony::Texture getTextureByName(std::string name);
 };

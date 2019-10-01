@@ -52,6 +52,9 @@ void Game::handleEvent(sf::Event e) {
 			InputManager::getInstance()->unregisterObj(player);
 			std::cout << "After.. " << player->GetRefCount() << std::endl;
 		}
+		if (e.key.code == sf::Keyboard::V) {
+			std::cout << "GAME OBJ HAS THIS MANY REFS: " << this->GetRefCount() << std::endl;
+		}
 		break;
 	case sf::Event::Closed:
 		app->close();
@@ -74,6 +77,8 @@ void Game::init()
 
 	Manager::getInstance()->registerManager(InputManager::getInstance());
 	Manager::getInstance()->registerManager(EventManager::getInstance());
+	Manager::getInstance()->registerManager(SpriteManager::getInstance());
+	Manager::getInstance()->registerManager(TextureManager::getInstance());
 	Manager::getInstance()->registerObj(player);
 	Manager::getInstance()->registerObj(this);
 

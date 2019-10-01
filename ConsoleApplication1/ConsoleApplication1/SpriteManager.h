@@ -9,16 +9,16 @@ class SpriteManager : public IRegisterUnk
 public:
 	static SpriteManager* instance;
 
-	std::set<ISprite*> registeredList;
+	std::set<ISpritePtr> registeredList;
 
 public:
 	static SpriteManager* getInstance();
 
 	SpriteManager();
 
-	virtual void registerObj(IUnknown* obj) override;
+	virtual void registerObj(IUnknownPtr obj) override;
 
-	virtual void unregisterObj(IUnknown *obj) override;
+	virtual void unregisterObj(IUnknownPtr obj) override;
 
 	moony::Sprite getSpriteByName(std::string sp_name);
 };

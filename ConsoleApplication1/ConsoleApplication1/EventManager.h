@@ -10,13 +10,13 @@ class EventManager : public IRegisterUnk
 public:
 	static EventManager* instance;
 
-	std::set<IEventReciever*> registeredList;
+	std::set<IEventRecieverPtr> registeredList;
 public:
 	static EventManager* getInstance();
 
-	void registerObj(IUnknown* obj);
+	void registerObj(IUnknownPtr obj);
 
-	void unregisterObj(IUnknown *obj);
+	void unregisterObj(IUnknownPtr obj) override;
 
 	void handleEvent(sf::RenderWindow* app);
 

@@ -13,28 +13,28 @@ InputManager* InputManager::getInstance()
 	return InputManager::instance;
 }
 
-void InputManager::registerObj(IUnknown *obj)
+void InputManager::registerObj(IUnknownPtr obj)
 {
-	IInputReciever *toAdd = nullptr;
+	IInputRecieverPtr toAdd = nullptr;
 	if (obj->QueryInterface(IInputReciever::myType, (void**)&toAdd) == false)
 		return;
 
-	toAdd->AddRef();
+	//toAdd->AddRef();
 	registeredList.insert(toAdd);
 }
 
-void InputManager::unregisterObj(IUnknown *obj)
+void InputManager::unregisterObj(IUnknownPtr obj)
 {
-	IInputReciever *toRem = nullptr;
+	IInputRecieverPtr toRem = nullptr;
 	if (obj->QueryInterface(IInputReciever::myType, (void**)&toRem) == false)
 		return;
 
 	registeredList.erase(toRem);
-	toRem->Release();
+	//toRem->Release();
 }
 
 void InputManager::handleInput() {
-	for (IInputReciever* obj : registeredList) {
+	for (IInputRecieverPtr obj : registeredList) {
 		obj->handleInput();
 	}
 }

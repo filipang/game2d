@@ -15,19 +15,19 @@ SpriteManager* SpriteManager::getInstance()
 SpriteManager::SpriteManager(){}
 
 
-void SpriteManager::registerObj(IUnknown *obj)
+void SpriteManager::registerObj(IUnknownPtr obj)
 {
 	ISprite *toAdd = nullptr;
 	if (obj->QueryInterface(ISprite::myType, (void**)&toAdd) == false)
 		return;
 
-	toAdd->AddRef();
+	//toAdd->AddRef();
 	registeredList.insert(toAdd);
 }
 
-void SpriteManager::unregisterObj(IUnknown *obj)
+void SpriteManager::unregisterObj(IUnknownPtr obj)
 {
-	ISprite *toRem = nullptr;
+	ISpritePtr toRem = nullptr;
 	if (obj->QueryInterface(ISprite::myType, (void**)&toRem) == false)
 		return;
 

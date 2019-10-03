@@ -43,6 +43,12 @@
     <Filter Include="Header Files\interfaces">
       <UniqueIdentifier>{4175ee40-3e14-4d88-a630-6f51ad92e3bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\duktape">
+      <UniqueIdentifier>{1c429f01-cff0-4f81-8cc6-22c3bada5cd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\duktape">
+      <UniqueIdentifier>{da0b71ff-14a7-42ec-bb25-8755de8a2b5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -111,6 +117,15 @@
     <ClInclude Include="UnkSmartPtr.h">
       <Filter>Header Files\interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="duktape\duk_config.h">
+      <Filter>Header Files\duktape</Filter>
+    </ClInclude>
+    <ClInclude Include="duktape\duktape.h">
+      <Filter>Header Files\duktape</Filter>
+    </ClInclude>
+    <ClInclude Include="DuktapeRunner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -169,6 +184,12 @@
     </ClCompile>
     <ClCompile Include="EventManager.cpp">
       <Filter>Source Files\mgrs</Filter>
+    </ClCompile>
+    <ClCompile Include="duktape\duktape.c">
+      <Filter>Source Files\duktape</Filter>
+    </ClCompile>
+    <ClCompile Include="DuktapeRunner.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,16 @@ enum iterfaces
 	IID_IDrawable
 };
 
+
+enum CLSIDS
+{
+	CLS_Sprite = 1,
+	CLS_Texture,
+	CLS_Player,
+	CLS_Entity,
+	CLS_Map
+};
+
 class IResource : public virtual IUnknown
 {
 public:
@@ -67,7 +77,7 @@ public:
 };
 typedef UnkSmartPtr<IEventReciever>	IEventRecieverPtr;
 
-class ISerialize : public virtual IUnknown
+class ISerializable : public virtual IUnknown
 {
 public:
 	static const int myType = IID_ISerialize;
@@ -76,4 +86,4 @@ public:
 	virtual size_t pushToBuffer(unsigned char* buffer, size_t offset) PURE;
 	virtual size_t getSizeInBytes() PURE;
 };
-typedef UnkSmartPtr<ISerialize>	ISerializePtr;
+typedef UnkSmartPtr<ISerializable>	ISerializablePtr;

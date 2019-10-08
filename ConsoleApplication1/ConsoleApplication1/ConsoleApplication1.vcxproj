@@ -169,6 +169,7 @@
     <ClInclude Include="duktape\duk_config.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="Factories.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Interfaces.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="json.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="moony\Log.h" />
     <ClInclude Include="moony\Sprite.h" />
     <ClInclude Include="moony\SpriteBatch.h" />
@@ -201,6 +203,7 @@
     <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="moony\Log.cpp" />
     <ClCompile Include="moony\Sprite.cpp" />
     <ClCompile Include="moony\SpriteBatch.cpp" />

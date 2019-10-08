@@ -2,6 +2,7 @@
 #include "Animation.h"
 #include <iostream>
 #include "TextureManager.h"
+#include "ResourceManager.h"
 #include "Manager.h"
 
 /*void Entity::CreateEntity(std::string animName, std::string animState, Animation a)
@@ -14,6 +15,9 @@
 	a.setState(animState);
 
 }*/
+
+Entity::Entity() {
+}
 
 Entity::Entity(float x, float y, std::string animName, std::string defaultState, float speed){
 
@@ -31,6 +35,27 @@ Entity::Entity(float x, float y, std::string animName, std::string defaultState,
 	sprite->setPosition(x, y);
 	sprite->setOrigin(animation->spriteWidth / 2, animation->spriteHeight / 2);
 	Entity::speed = speed;
+}
+
+size_t Entity::popFromBuffer(unsigned char * buffer, size_t offset)
+{
+	offset -= sizeof(clsid);
+	POP(buffer + offset, id);
+	offset -= sizeof(id);
+	return size_t();
+}
+
+size_t Entity::pushToBuffer(unsigned char * buffer, size_t offset)
+{
+	PUSH(buffer + offset, clsid);
+	offset += sizeof(clsid);
+	PUSH(buffer + offset, getSizeInBytes());
+	return size_t();
+}
+
+size_t Entity::getSizeInBytes()
+{
+	return sizeof(id)+sizeof(clsid);
 }
 
 void Entity::move(float deltaTime) {

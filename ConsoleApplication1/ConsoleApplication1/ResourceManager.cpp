@@ -3,6 +3,8 @@
 #include "ResourceManager.h"
 #include "Interfaces.h"
 #include "json/json.h"
+#include "Factories.h"
+#include "Manager.h"
 
 ResourceManager* ResourceManager::instance = NULL;
 
@@ -14,6 +16,31 @@ ResourceManager* ResourceManager::getInstance()
 
 	return ResourceManager::instance;
 }
+
+bool ResourceManager::loadLevelFromBuffer(unsigned char buffer[], int buffer_size)
+{
+	int offset = 0;
+	int clsid, size;
+	void* ptr;
+	while (offset < buffer_size) {
+		POP(buffer + offset, clsid);
+		offset += sizeof(clsid);
+		POP(buffer + offset, size);
+		if (CreateInstance(clsid, IID_IUnknown, &ptr)) {
+			ISerializablePtr obj(ptr);
+			obj->popFromBuffer(buffer, offset);
+			Manager::getInstance()->registerObj(obj);
+		}
+		offset += size;
+	}
+}
+
+int ResourceManager::loadLevelFileToBuffer(std::string level_name, unsigned char buffer[]) {
+	std::ifstream file(level_name, std::ios::in | std::ios::binary);
+	file.read((char*)buffer, MAX_FILE_SIZE);
+	return 0;
+}
+
 
 ResourceManager::ResourceManager()
 {

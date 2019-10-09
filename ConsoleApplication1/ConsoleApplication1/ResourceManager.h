@@ -6,7 +6,7 @@
 #include "Resource.h"
 #include <SFML/Graphics.hpp>
 
-#define MAX_FILE_SIZE 1000000000
+#define MAX_FILE_SIZE 100000
 #define DEFAULT_MAP_SIZE_X 40
 #define DEFAULT_MAP_SIZE_Y 20
 #define F_READ(filestream,obj) filestream.read((char*)(&obj), sizeof(obj))

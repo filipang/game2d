@@ -49,6 +49,12 @@
     <Filter Include="Source Files\duktape">
       <UniqueIdentifier>{da0b71ff-14a7-42ec-bb25-8755de8a2b5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\nav">
+      <UniqueIdentifier>{eb73150c-5560-4b09-b061-45288cdaf7ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\nav">
+      <UniqueIdentifier>{36ea7368-11b6-4c70-9698-1d1e3cd5bec8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -132,6 +138,9 @@
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="nav\CNavSample.h">
+      <Filter>Header Files\nav</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -199,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nav\CNavSample.cpp">
+      <Filter>Source Files\nav</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

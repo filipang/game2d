@@ -3,6 +3,7 @@
 #include "Interfaces.h"
 #include "moony/Sprite.h"
 #include "Entity.h"
+#include "Map.h"
 
 bool CreateInstance(int clsid, int iid, void** ret)
 {
@@ -23,7 +24,13 @@ bool CreateInstance(int clsid, int iid, void** ret)
 	} break;
 	case CLS_Entity:
 	{
-		Entity* toret; // constructor of entity to be added
+		Entity* toret = new Entity(); // constructor of entity to be added
+		success = toret->QueryInterface(iid, ret);
+		if (!success) delete toret;
+	} break;
+	case CLS_Map:
+	{
+		Map* toret = new Map(); // constructor of entity to be added
 		success = toret->QueryInterface(iid, ret);
 		if (!success) delete toret;
 	} break;

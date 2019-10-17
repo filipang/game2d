@@ -16,6 +16,7 @@ public:
 		if ( _pointer )
 			_pointer->AddRef();
 	}
+	
 	template<class IFaceOther>
 	UnkSmartPtr(IFaceOther* ptr)
 	{

@@ -11,8 +11,8 @@
 #define DEFAULT_MAP_SIZE_Y 20
 #define F_READ(filestream,obj) filestream.read((char*)(&obj), sizeof(obj))
 #define F_WRITE(filestream,obj) filestream.write((char*)(&obj), sizeof(obj)) 
-#define PUSH(buffer, value)		auto temp = value; \
-								memcpy(buffer , &temp, sizeof(temp))
+#define PUSH(buffer, value)		{auto temp = value; \
+								memcpy(buffer , &temp, sizeof(temp));}
 
 #define POP(buffer, value)  memcpy(&value, buffer, sizeof(value))
 
@@ -42,7 +42,7 @@ public:
 
 	bool loadLevelFromBuffer(unsigned char buffer[], int buffer_size);
 
-	int loadLevelFileToBuffer(std::string level_name, unsigned char buffer[]);
+	int loadLevelFileToBuffer(std::string level_name, unsigned char buffer[], int bufsize);
 
 	void loadAtlas(std::string atl_name);
 

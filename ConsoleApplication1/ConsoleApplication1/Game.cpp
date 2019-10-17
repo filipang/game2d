@@ -81,6 +81,9 @@ void Game::init()
 	Manager::getInstance()->registerManager(TextureManager::getInstance());
 	Manager::getInstance()->registerObj(player);
 	Manager::getInstance()->registerObj(this);
+	unsigned char buffer[MAX_FILE_SIZE];
+	ResourceManager::getInstance()->loadLevelFileToBuffer("save1.save", buffer, MAX_FILE_SIZE);
+	ResourceManager::getInstance()->loadLevelFromBuffer(buffer, MAX_FILE_SIZE);
 
 }
 

@@ -39,10 +39,11 @@ Entity::Entity(float x, float y, std::string animName, std::string defaultState,
 
 size_t Entity::popFromBuffer(unsigned char * buffer, size_t offset)
 {
-	offset -= sizeof(clsid);
-	POP(buffer + offset, id);
-	offset -= sizeof(id);
-	return size_t();
+	int size;
+	POP(buffer + offset, size);
+	offset += sizeof(size);
+	
+	return 0;
 }
 
 size_t Entity::pushToBuffer(unsigned char * buffer, size_t offset)
@@ -50,12 +51,12 @@ size_t Entity::pushToBuffer(unsigned char * buffer, size_t offset)
 	PUSH(buffer + offset, clsid);
 	offset += sizeof(clsid);
 	PUSH(buffer + offset, getSizeInBytes());
-	return size_t();
+	return 0;
 }
 
 size_t Entity::getSizeInBytes()
 {
-	return sizeof(id)+sizeof(clsid);
+	return sizeof(int) + sizeof(clsid) + sizeof(id) + sizeof(x) + sizeof(y);
 }
 
 void Entity::move(float deltaTime) {

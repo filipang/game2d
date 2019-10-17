@@ -26,18 +26,24 @@ bool ResourceManager::loadLevelFromBuffer(unsigned char buffer[], int buffer_siz
 		POP(buffer + offset, clsid);
 		offset += sizeof(clsid);
 		POP(buffer + offset, size);
-		if (CreateInstance(clsid, IID_IUnknown, &ptr)) {
-			ISerializablePtr obj(ptr);
+		if (size == 0) break;
+		if (CreateInstance(clsid, IID_ISerializable, &ptr)) {
+			ISerializablePtr obj(static_cast<ISerializable*>(ptr));
 			obj->popFromBuffer(buffer, offset);
 			Manager::getInstance()->registerObj(obj);
 		}
-		offset += size;
+		offset += size  + sizeof(size);
 	}
+	return 0;
 }
 
-int ResourceManager::loadLevelFileToBuffer(std::string level_name, unsigned char buffer[]) {
+int ResourceManager::loadLevelFileToBuffer(std::string level_name, unsigned char buffer[], int bufsize) {
 	std::ifstream file(level_name, std::ios::in | std::ios::binary);
-	file.read((char*)buffer, MAX_FILE_SIZE);
+	file.read((char*)buffer, bufsize);
+	if (file)
+		std::cout << "all " << file.gcount() << " read successfully.";
+	else
+		std::cout << "error: only " << file.gcount() << " could be read";
 	return 0;
 }
 

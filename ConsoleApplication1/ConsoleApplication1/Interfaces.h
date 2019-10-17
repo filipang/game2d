@@ -11,7 +11,7 @@ enum iterfaces
 	IID_ITexture,
 	IID_IInputReciever,
 	IID_IEventReciever,
-	IID_ISerialize,
+	IID_ISerializable,
 	IID_ISprite,
 	IID_IDrawable
 };
@@ -80,7 +80,7 @@ typedef UnkSmartPtr<IEventReciever>	IEventRecieverPtr;
 class ISerializable : public virtual IUnknown
 {
 public:
-	static const int myType = IID_ISerialize;
+	static const int myType = IID_ISerializable;
 
 	virtual size_t popFromBuffer(unsigned char* buffer, size_t offset) PURE;
 	virtual size_t pushToBuffer(unsigned char* buffer, size_t offset) PURE;

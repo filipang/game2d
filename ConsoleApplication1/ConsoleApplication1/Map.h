@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "IUnknown.h"
 #include "Interfaces.h"
-class Map : CoUnknown1<ISerializable>
+class Map : public CoUnknown1<ISerializable>
 {
 public:
 	static const int clsid = CLS_Map;
